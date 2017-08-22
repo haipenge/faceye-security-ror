@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+     body {
+	padding-top: 60px;
+	padding-bottom: 20px;
+}
+    </style>
+</head>
+<body>
+<!--Header navigation-->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			 <%=render 'layouts/header'%>
+		</div>
+</div>
+
+<!--End Header define-->
+<!--Main Body -->
+<div class="container-fluid">
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+	<%= yield %>
+</div>
+<!--End Body -->
+
+<!-- Start Footer-->
+<div class="container">
+	<%= render 'layouts/footer' %>
+</div>
+<!-- Debug Info-->
+<div class="panel bg-warning">
+  <%= debug(params) if Rails.env.development? %>
+</div>
+
+</body>
+</html>

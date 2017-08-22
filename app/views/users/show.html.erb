@@ -1,0 +1,22 @@
+<% provide(:title, 'Show User Detail') %>
+<div class="row">
+  <div class="col-md-4">
+    <%= render "user_info" %>
+  </div>
+  <div class="col-md-8">
+    <h1>我的微博</h1>
+    <div class="content">
+      <%= render "microposts/micropost_form" %>
+    </div>
+    <div class="content">
+      <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
